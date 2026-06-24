@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/core.css" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/icon-font.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/style.css" />
+</head>
+<body>
+    <%- include('../loader/loader.ejs') %>
+    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/leftsidebar.ejs') %>
+    <div class="mobile-menu-overlay"></div>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12"><div class="title"><h4>Blogs</h4></div></div>
+                        <div class="col-md-6 col-sm-12 text-right"><a href="/blogs/add" class="btn btn-primary">Add Blog</a></div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <% if (blogs.length > 0) { %>
+                        <% blogs.forEach(blog => { %>
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                                <div class="card card-box">
+                                    <% if (blog.image) { %><img class="card-img-top" src="<%= blog.image %>" alt="" style="height:220px;object-fit:cover" /><% } %>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= blog.title %></h5>
+                                        <p class="card-text"><%= blog.content.substring(0, 120) %><%= blog.content.length > 120 ? '...' : '' %></p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="/blogs/edit/<%= blog._id %>" class="btn btn-outline-primary btn-sm">Edit</a>
+                                            <form action="/blogs/delete/<%= blog._id %>" method="post" onsubmit="return confirm('Delete this blog?')">
+                                                <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="col-12"><div class="card-box pd-30 text-center"><h5>No blog found</h5><p>Add your first blog using DeskApp UI.</p><a href="/blogs/add" class="btn btn-primary">Add Blog</a></div></div>
+                    <% } %>
+                </div>
+            </div>
+            <%- include('../partials/footer.ejs') %>
+        </div>
+    </div>
+    <script src="/vendors/scripts/core.js"></script>
+    <script src="/vendors/scripts/script.min.js"></script>
+    <script src="/vendors/scripts/process.js"></script>
+    <script src="/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>

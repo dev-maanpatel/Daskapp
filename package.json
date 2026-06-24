@@ -1,0 +1,20 @@
+{
+  "name": "deskapp-auth-blog",
+  "version": "1.0.0",
+  "description": "DeskApp authentication and blog CRUD with cookies and image upload",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.1",
+    "multer": "^2.2.0",
+    "nodemon": "^3.1.11"
+  }
+}

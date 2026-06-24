@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/core.css" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/icon-font.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/style.css" />
+</head>
+<body>
+    <%- include('../loader/loader.ejs') %>
+    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/leftsidebar.ejs') %>
+    <div class="mobile-menu-overlay"></div>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header"><div class="row"><div class="col-md-6"><h4>Add Blog</h4></div><div class="col-md-6 text-right"><a href="/blogs" class="btn btn-secondary">Back</a></div></div></div>
+                <div class="card-box pd-30">
+                    <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+                    <form action="/blogs/add" method="post" enctype="multipart/form-data">
+                        <div class="form-group"><label>Blog Title</label><input type="text" name="title" class="form-control" required /></div>
+                        <div class="form-group"><label>Blog Image</label><input type="file" name="image" class="form-control-file" accept="image/*" /></div>
+                        <div class="form-group"><label>Blog Content</label><textarea name="content" class="form-control" rows="7" required></textarea></div>
+                        <button type="submit" class="btn btn-primary">Save Blog</button>
+                    </form>
+                </div>
+            </div>
+            <%- include('../partials/footer.ejs') %>
+        </div>
+    </div>
+    <script src="/vendors/scripts/core.js"></script>
+    <script src="/vendors/scripts/script.min.js"></script>
+    <script src="/vendors/scripts/process.js"></script>
+    <script src="/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>
